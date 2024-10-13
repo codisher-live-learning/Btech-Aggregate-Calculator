@@ -10,5 +10,5 @@ Thank you for considering contributing to our project during Hacktoberfest! We a
 
 3. **Clone Your Fork**:
    ```bash
-   git clone https://github.com/your-username/repo-name.git
+   git clone https://github.com/your-username/Btech-Aggregate-Calculator.git
    cd repo-name
