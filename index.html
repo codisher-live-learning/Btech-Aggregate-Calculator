@@ -1,206 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aggregate Calculator</title>
-    <script src="https://cdn.tailwindcss.com/"></script>
+    <title>Enhanced Aggregate Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    .glassmorphism {
-      background-color: #ffffff33;
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-    body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-}
-
-.snowflakes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.snowflake {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: snowfall linear infinite;
-}
-
-.snowflake:nth-child(1) {
-    top: -10%;
-    left: 10%;
-    animation-duration: 15s;
-}
-
-.snowflake:nth-child(2) {
-    top: -10%;
-    left: 20%;
-    animation-duration: 10s;
-    animation-delay: 2s;
-}
-
-.snowflake:nth-child(3) {
-    top: -10%;
-    left: 30%;
-    animation-duration: 12s;
-    animation-delay: 4s;
-}
-
-.snowflake:nth-child(4) {
-    top: -10%;
-    left: 40%;
-    animation-duration: 8s;
-    animation-delay: 1s;
-}
-
-.snowflake:nth-child(5) {
-    top: -10%;
-    left: 50%;
-    animation-duration: 14s;
-    animation-delay: 3s;
-}
-
-.snowflake:nth-child(6) {
-    top: -10%;
-    left: 60%;
-    animation-duration: 11s;
-    animation-delay: 2s;
-}
-
-.snowflake:nth-child(7) {
-    top: -10%;
-    left: 70%;
-    animation-duration: 13s;
-    animation-delay: 5s;
-}
-
-.snowflake:nth-child(8) {
-    top: -10%;
-    left: 80%;
-    animation-duration: 9s;
-    animation-delay: 1s;
-}
-
-.snowflake:nth-child(9) {
-    top: -10%;
-    left: 90%;
-    animation-duration: 16s;
-    animation-delay: 3s;
-}
-
-.snowflake:nth-child(10) {
-    top: -10%;
-    left: 95%;
-    animation-duration: 10s;
-    animation-delay: 4s;
-}
-
-@keyframes snowfall {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-
-
-
-</style>
-
-
 <body>
     <div class="snowflakes" aria-hidden="true">
         <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-    </div>
-     
-    <div class="w-[95%] lg:w-[50%] mx-auto my-5 text-white  flex flex-col p-5 gap-y-2 text-xl glassmorphism">
-        <h1 class="text-2xl font-extrabold text-center">Aggregate Calculator</h1>
-        <label for="marks">Enter your first year marks:</label>
-        <input id="first" class="border-2 border-gray-800 p-1 text-black">
-        <label for="marks">Enter your second year marks:</label>
-        <input id="second" class="border-2 border-gray-800 p-1 text-black">
-        <label for="marks">Enter your third year marks:</label>
-        <input id="third" class="border-2 border-gray-800 p-1 text-black">
-        <label for="marks">Enter your fourth year marks:</label>
-        <input id="fourth" class="border-2 border-gray-800 p-1 text-black">
-
-        <label for="marks">Enter your target Aggregate Percentage:</label>
-        <input id="target" class="border-2 border-gray-800 p-1 text-black">
-        <button class="w-fit bg-blue-400 text-white font-bold p-2 text-xl">Calculate</button>
-    
-        <p>A single sheet of paper cannot decide your future</p>
+        <!-- Other snowflakes here -->
     </div>
 
-   
+    <div class="container glassmorphism">
+        <h1 class="title">Aggregate Calculator</h1>
+        <div id="courseInputs">
+            <div class="input-group">
+                <label>Enter marks for Course 1:</label>
+                <input type="number" class="marks-input">
+                <label>Weightage (%)</label>
+                <input type="number" class="weightage-input">
+            </div>
+        </div>
+        <button id="addCourse">Add Another Course</button>
+        <br>    
+        <label>Enter your target Aggregate Percentage:</label>
+        <br>
+        <input id="target" class="input-field">
+
+        <button id="calculate">Calculate</button>
+        <button id="reset">Reset</button>
+
+        <p id="resultMessage">Your result will appear here...</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const calculate = () => {
-        const first = document.getElementById('first').value;
-        const second = document.getElementById('second').value;
-        const third = document.getElementById('third').value;
-        const fourth = document.getElementById('fourth').value;
-        const target = document.getElementById('target').value;
-
-        let aggregate_total_marks = parseFloat(((25 / 100) * 1350) + (50 / 100) * 1850 + (75 / 100) * 1850 + (100 / 100) * 1700)
-
-        let target_percentage = parseFloat(target) // 0% initially
-
-        let first_year_marks = parseFloat(first)
-        let second_year_marks = parseFloat(second)
-        let third_year_marks = parseFloat(third)
-        let fourth_year_marks = parseFloat(fourth)
-
-        let aggregate_obtained_marks = parseFloat(((25 / 100) * first_year_marks) + (50 / 100) * second_year_marks + (75 / 100) * third_year_marks + (100 / 100) * fourth_year_marks)
-
-
-        let target_marks = parseFloat((target_percentage / 100) * aggregate_total_marks)
-
-        let required_marks = parseFloat(target_marks - aggregate_obtained_marks)
-        let current_aggregate = parseFloat((aggregate_obtained_marks / aggregate_total_marks) * 100).toFixed(2)
-
-        if (target_marks > aggregate_obtained_marks) {
-            Swal.fire(`You need ${required_marks} more marks to achieve ${target_percentage}% aggregate. and your current aggregate is ${(current_aggregate) }%`);
-        }
-        else {
-            Swal.fire(`You have already achieved ${target_percentage}% aggregate or more. and your current aggregate is ${current_aggregate}%  Congratulations! `)
-        }
-
-
-    }
-
-    document.querySelector('button').addEventListener('click', calculate);
-</script>
-
 </html>
